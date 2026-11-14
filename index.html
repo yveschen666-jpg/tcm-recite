@@ -514,6 +514,11 @@ mark{background:rgba(192,0,0,.16);color:var(--cinnabar);border-radius:3px;paddin
 .empty-state{text-align:center;padding:60px 20px;color:var(--ink-3);font-family:var(--sans)}
 .empty-state svg{width:46px;height:46px;margin-bottom:14px;color:var(--line-2)}
 
+.site-footer{margin-top:22px;padding:24px 10px 36px;text-align:center;font-family:var(--sans);
+  border-top:1px solid var(--line)}
+.sf-line{font-size:13px;color:var(--ink-2);letter-spacing:.4px}
+.sf-sub{font-size:12px;margin-top:7px;color:var(--ink-3);line-height:1.6}
+
 /* ============ 响应式 ============ */
 @media (max-width:959px){
   .sidebar{position:fixed;left:0;top:0;z-index:50;transform:translateX(-100%);transition:transform .25s;width:272px}
@@ -693,6 +698,10 @@ mark{background:rgba(192,0,0,.16);color:var(--cinnabar);border-radius:3px;paddin
     <div class="brand-name">中医经典背诵</div>
   </header>
   <main class="content" id="view"></main>
+  <footer class="site-footer">
+    <div class="sf-line">© 2026 Eves Chen · 中医经典背诵</div>
+    <div class="sf-sub">经典原文属公共领域；本应用代码、设计与整理成果保留署名，依 MIT 许可证发布</div>
+  </footer>
 </div>
 </div>
 <div class="toast-wrap" id="toastWrap"></div>
@@ -22056,7 +22065,7 @@ function renderStudy(view) {
   h.push('<div class="search-box">' + ICON.search + '<input id="kwInput" type="search" placeholder="搜索编号 / 出处 / 原文" value="' + esc(ui.kw) + '"></div>');
   h.push('<select class="filter" id="chFilter">');
   h.push('<option value="-1">全部章节</option>');
-  DATA.chapters.forEach(function (ch, ci) {
+  CUR.chapters.forEach(function (ch, ci) {
     h.push('<option value="' + ci + '"' + (ui.ch === ci ? " selected" : "") + '>' + esc(ch.title) + '</option>');
   });
   h.push('</select>');
@@ -22397,7 +22406,7 @@ function renderKeypoints(view) {
 
   h.push('<div class="kp-filters">');
   h.push('<button class="btn btn-sm' + (ui.kpCh < 0 ? " btn-primary" : "") + '" data-kpch="-1">全部</button>');
-  DATA.chapters.forEach(function (ch, ci) {
+  CUR.chapters.forEach(function (ch, ci) {
     h.push('<button class="btn btn-sm' + (ui.kpCh === ci ? " btn-primary" : "") +
       '" data-kpch="' + ci + '">' + esc(ch.title) + "</button>");
   });
